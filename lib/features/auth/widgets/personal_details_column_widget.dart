@@ -6,6 +6,7 @@ import 'package:ecommerce/features/auth/logic/auth_cubit/auth_state.dart';
 import 'package:ecommerce/features/auth/widgets/text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class PersonalDetailsColumnWidget extends StatelessWidget {
   const PersonalDetailsColumnWidget({super.key});
@@ -23,17 +24,17 @@ class PersonalDetailsColumnWidget extends StatelessWidget {
                 "Personal Details",
                 style: Theme.of(context).textTheme.bodyLarge,
               ),
-              verticalSpace(20),
+              verticalSpace(20.h),
               TextFormFieldWidget(
                   label: "full name",
                   hintText: "full name",
                   textEditingController: cubit.nameController),
-              verticalSpace(28),
+              verticalSpace(28.h),
               TextFormFieldWidget(
                   label: "email",
                   hintText: "email",
                   textEditingController: cubit.emailController),
-              verticalSpace(28),
+              verticalSpace(28.h),
               TextFormFieldWidget(
                   label: "phone",
                   hintText: "000 000 0000",

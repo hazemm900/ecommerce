@@ -1,6 +1,7 @@
 import 'package:ecommerce/core/base_widget/custom_text_form_field.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class TextFormFieldWidget extends StatelessWidget {
   final String label;
@@ -27,7 +28,7 @@ class TextFormFieldWidget extends StatelessWidget {
           label,
           style: Theme.of(context).textTheme.titleMedium,
         ),
-        verticalSpace(6),
+        verticalSpace(6.h),
         CustomTextFormField(
           textEditingController: textEditingController,
           hintText: hintText,

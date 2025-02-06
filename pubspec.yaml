@@ -60,6 +60,7 @@ dependencies:
   webview_flutter: ^4.0.0
   persistent_bottom_nav_bar: ^5.0.2
   flutter_spinkit:
+  flutter_screenutil:
 
 
 dev_dependencies:

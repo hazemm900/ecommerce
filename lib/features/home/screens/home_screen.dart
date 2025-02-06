@@ -7,6 +7,7 @@ import 'package:ecommerce/features/home/logic/home_cubit/home_cubit.dart';
 import 'package:ecommerce/features/home/logic/home_cubit/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -29,9 +30,9 @@ class HomeScreen extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text('52,082+ Items',
+                    Text('52,082+ Items',
                         style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.bold)),
+                            fontSize: 16.sp, fontWeight: FontWeight.bold)),
                     Row(
                       children: [
                         IconButton(
@@ -53,14 +54,14 @@ class HomeScreen extends StatelessWidget {
               ),
               const AllCategoriesRowWidget(),
               state is HomeLoadingState
-                  ? const Center(
+                  ? Center(
                       child: Padding(
-                        padding: EdgeInsets.all(24.0),
-                        child: SpinKitHourGlass(
+                      padding: EdgeInsets.all(24.0),
+                      child: SpinKitHourGlass(
                         color: MyColors.myMutedGold,
-                        size: 50.0,
-                    ),
-                      ))
+                        size: 50.0.sp,
+                      ),
+                    ))
                   : Expanded(
                       child: GridView.builder(
                         padding: const EdgeInsets.all(8),

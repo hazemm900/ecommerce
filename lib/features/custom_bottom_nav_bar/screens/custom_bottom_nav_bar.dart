@@ -3,6 +3,7 @@ import 'package:ecommerce/features/custom_bottom_nav_bar/logic/custom_bottom_nav
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:persistent_bottom_nav_bar/persistent_tab_view.dart';
 
 class CustomBottomNavBar extends StatelessWidget {
@@ -55,13 +56,13 @@ class CustomBottomNavBar extends StatelessWidget {
                 inactiveColorPrimary: MyColors.myMutedBlue,
               ),
             ],
-            backgroundColor:  Colors.white,
+            backgroundColor: Colors.white,
             resizeToAvoidBottomInset: true,
             stateManagement: true,
-            decoration: const NavBarDecoration(
+            decoration: NavBarDecoration(
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(20),
-                topRight: Radius.circular(20),
+                topLeft: Radius.circular(20.r),
+                topRight: Radius.circular(20.r),
               ),
             ),
             popAllScreensOnTapOfSelectedTab: true,

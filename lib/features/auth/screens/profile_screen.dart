@@ -12,6 +12,7 @@ import 'package:ecommerce/features/auth/widgets/address_details_widget.dart';
 import 'package:ecommerce/features/auth/widgets/personal_details_column_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -29,10 +30,10 @@ class ProfileScreen extends StatelessWidget {
               appBarTitle: "Profile",
             ),
             body: state is ProfileLoadingState
-                ? const Center(
+                ? Center(
                     child: SpinKitHourGlass(
                       color: MyColors.myMutedGold,
-                      size: 50.0,
+                      size: 50.0.r,
                     ),
                   )
                 : SingleChildScrollView(
@@ -43,8 +44,8 @@ class ProfileScreen extends StatelessWidget {
                         children: [
                           Center(
                             child: Container(
-                              height: 100,
-                              width: 100,
+                              height: 100.h,
+                              width: 100.w,
                               decoration: const BoxDecoration(
                                   shape: BoxShape.circle, color: Colors.white),
                               child: CustomNetworkImage(
@@ -56,11 +57,11 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             ),
                           ),
-                          verticalSpace(28),
+                          verticalSpace(28.h),
                           const PersonalDetailsColumnWidget(),
-                          verticalSpace(28),
+                          verticalSpace(28.h),
                           const AddressDetailsWidget(),
-                          verticalSpace(34),
+                          verticalSpace(34.h),
                           CustomElevatedButton(
                             label: "Log Out",
                             onPress: () {

@@ -9,6 +9,7 @@ import 'package:ecommerce/features/cart/widgets/product_in_cart_price_widget.dar
 import 'package:ecommerce/features/cart/widgets/total_cart_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CartListWidget extends StatelessWidget {
@@ -21,10 +22,10 @@ class CartListWidget extends StatelessWidget {
       builder: (context, state) {
         var cubit = getIt<CartsCubit>();
         return cubit.getCartModel?.data?.cartItems == null
-            ? const Center(
+            ?  Center(
                 child: SpinKitHourGlass(
                   color: MyColors.myMutedGold,
-                  size: 50.0,
+                  size: 50.0.r,
                 ))
             : Column(
                 children: [
@@ -34,7 +35,7 @@ class CartListWidget extends StatelessWidget {
                     itemCount: cubit.getCartModel!.data!.cartItems!.length,
                     itemBuilder: (context, index) {
                       return Card(
-                        margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                        margin:  EdgeInsets.symmetric(horizontal: 16.w, vertical: 8.h),
                         elevation: 4,
                         child: Padding(
                           padding: const EdgeInsets.all(10.0),
@@ -45,10 +46,10 @@ class CartListWidget extends StatelessWidget {
                                 children: [
                                   CustomNetworkImage(
                                     image: cubit.getCartModel?.data?.cartItems?[index].product?.image ?? "",
-                                    width: 130,
-                                    height: 125,
+                                    width: 130.w,
+                                    height: 125.h,
                                   ),
-                                  horizontalSpace(10),
+                                  horizontalSpace(10.w),
                                   ProductInCartDetailsWidget(index: index)
                                 ],
                               ),

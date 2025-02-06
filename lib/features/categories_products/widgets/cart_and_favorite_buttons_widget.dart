@@ -4,6 +4,7 @@ import 'package:ecommerce/features/cart/logic/cart_cubit/carts_cubit.dart';
 import 'package:ecommerce/features/cart/logic/cart_cubit/carts_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CartAndFavoritesButtonsWidget extends StatelessWidget {
   const CartAndFavoritesButtonsWidget(
@@ -25,10 +26,10 @@ class CartAndFavoritesButtonsWidget extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size(double.infinity, 50),
+              minimumSize: Size(double.infinity, 50.w),
               backgroundColor: buttonColor,
               shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(30),
+                borderRadius: BorderRadius.circular(30.r),
               ),
             ),
             onPressed: () {
@@ -39,13 +40,16 @@ class CartAndFavoritesButtonsWidget extends StatelessWidget {
               children: [
                 Text(
                   buttonLabel,
-                  style: const TextStyle(
-                      fontSize: 14,
+                  style: TextStyle(
+                      fontSize: 14.sp,
                       fontWeight: FontWeight.w700,
                       color: Colors.white),
                 ),
-                horizontalSpace(8),
-                Icon(buttonIcon,color: Colors.white,)
+                horizontalSpace(8.w),
+                Icon(
+                  buttonIcon,
+                  color: Colors.white,
+                )
               ],
             ));
       },

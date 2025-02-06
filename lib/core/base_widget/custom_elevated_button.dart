@@ -3,6 +3,7 @@ import 'package:ecommerce/features/change_theme/change_theme_cubit/change_theme_
 import 'package:ecommerce/features/change_theme/change_theme_cubit/change_theme_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CustomElevatedButton extends StatelessWidget {
@@ -23,7 +24,7 @@ class CustomElevatedButton extends StatelessWidget {
         var cubit = ChangeThemeCubit.get(context);
         return ElevatedButton(
             style: ElevatedButton.styleFrom(
-              minimumSize: const Size(double.infinity, 50),
+              minimumSize:  Size(double.infinity, 50.w),
               backgroundColor:
                   cubit.isDark ? MyColors.myMutedGold : MyColors.myMutedBlue,
               shape: RoundedRectangleBorder(
@@ -32,15 +33,15 @@ class CustomElevatedButton extends StatelessWidget {
             ),
             onPressed: onPress,
             child: loading
-                ? const Center(
+                ?  Center(
                     child: SpinKitHourGlass(
                       color: MyColors.myMutedGold,
-                      size: 50.0,
+                      size: 50.0.r,
                     ))
                 : Text(
                     label,
-                    style: const TextStyle(
-                        fontSize: 18,
+                    style:  TextStyle(
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w700,
                         color: Colors.white),
                   ));

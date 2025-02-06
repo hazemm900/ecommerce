@@ -4,6 +4,7 @@ import 'package:ecommerce/features/favorites/logic/favorites_cubit/favorites_cub
 import 'package:ecommerce/features/favorites/logic/favorites_cubit/favorites_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductInFavoritesDetailsWidget extends StatelessWidget {
   const ProductInFavoritesDetailsWidget({super.key, required this.index});
@@ -24,17 +25,17 @@ class ProductInFavoritesDetailsWidget extends StatelessWidget {
                 cubit.favoritesModel?.data?.data?[index].product?.name ?? "",
                 style: Theme.of(context).textTheme.displayMedium,
               ),
-              verticalSpace(10),
+              verticalSpace(10.h),
               Row(
                 children: [
                   Text(
                     "${cubit.favoritesModel?.data?.data?[index].product?.price.toString() ?? ""} EGP",
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         color: Colors.green),
                   ),
-                  horizontalSpace(16),
+                  horizontalSpace(16.w),
                   cubit.favoritesModel?.data?.data?[index].product?.discount ==
                           0
                       ? const SizedBox()
@@ -44,7 +45,7 @@ class ProductInFavoritesDetailsWidget extends StatelessWidget {
                               'up to ${cubit.favoritesModel?.data?.data?[index].product?.discount}% off',
                               style: const TextStyle(color: Colors.red),
                             ),
-                            verticalSpace(4),
+                            verticalSpace(4.h),
                             Text(
                               "${cubit.favoritesModel?.data?.data?[index].product?.oldPrice.toString() ?? ""} EGP",
                               style: const TextStyle(

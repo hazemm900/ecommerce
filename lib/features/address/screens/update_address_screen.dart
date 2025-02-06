@@ -8,9 +8,11 @@ import 'package:ecommerce/features/address/logic/address_cubit/address_state.dar
 import 'package:ecommerce/features/auth/widgets/text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class UpdateAddressScreen extends StatelessWidget {
   const UpdateAddressScreen({super.key, required this.addressId});
+
   final int addressId;
 
   @override
@@ -31,32 +33,31 @@ class UpdateAddressScreen extends StatelessWidget {
                       label: "Location name",
                       hintText: "Enter your location name",
                       textEditingController: cubit.nameController),
-                  verticalSpace(26),
+                  verticalSpace(26.h),
                   TextFormFieldWidget(
                       label: "City name",
                       hintText: "Enter your city name",
                       textEditingController: cubit.cityController),
-                  verticalSpace(26),
+                  verticalSpace(26.h),
                   TextFormFieldWidget(
                       label: "Region name",
                       hintText: "Enter your region name",
                       textEditingController: cubit.regionController),
-                  verticalSpace(26),
+                  verticalSpace(26.h),
                   TextFormFieldWidget(
                       label: "Details",
                       hintText: "Enter location details",
                       textEditingController: cubit.detailsController),
-                  verticalSpace(26),
+                  verticalSpace(26.h),
                   TextFormFieldWidget(
                       label: "Notes",
                       hintText: "Notes...",
                       textEditingController: cubit.notesController),
-                  verticalSpace(100),
+                  verticalSpace(100.h),
                   CustomElevatedButton(
                       label: "Update Address",
                       onPress: () {
-                        cubit.updateAddress(
-                            context, addressId);
+                        cubit.updateAddress(context, addressId);
                       }),
                 ],
               ),

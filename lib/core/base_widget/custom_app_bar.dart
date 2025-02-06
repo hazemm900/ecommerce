@@ -6,6 +6,7 @@ import 'package:ecommerce/features/auth/screens/profile_screen.dart';
 import 'package:ecommerce/features/change_theme/widget/change_theme_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String appBarTitle;
@@ -18,10 +19,10 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       centerTitle: true,
       title: Text(
         appBarTitle,
-        style: const TextStyle(
+        style:  TextStyle(
           color: MyColors.myMutedGold,
           fontWeight: FontWeight.bold,
-          fontSize: 24,
+          fontSize: 24.sp,
         ),
       ),
       actions: [

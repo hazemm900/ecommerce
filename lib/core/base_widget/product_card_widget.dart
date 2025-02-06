@@ -2,6 +2,7 @@ import 'package:ecommerce/core/base_widget/custom_cached_network_image.dart';
 import 'package:ecommerce/core/theme/color.dart';
 import 'package:ecommerce/features/categories_products/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductCardWidget extends StatelessWidget {
   const ProductCardWidget(
@@ -37,14 +38,14 @@ class ProductCardWidget extends StatelessWidget {
       },
       child: Card(
         elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: ClipRRect(
                   borderRadius:
-                      const BorderRadius.vertical(top: Radius.circular(10)),
+                       BorderRadius.vertical(top: Radius.circular(10.r)),
                   child: CustomNetworkImage(image: productImage)),
             ),
             Padding(
@@ -59,8 +60,8 @@ class ProductCardWidget extends StatelessWidget {
               child: Text(productDescription,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style: const TextStyle(
-                      fontSize: 12,
+                  style:  TextStyle(
+                      fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
                       color: MyColors.myGrey)),
             ),
@@ -87,10 +88,10 @@ class ProductCardWidget extends StatelessWidget {
                   const Spacer(),
                   IconButton(
                     onPressed: () {},
-                    icon: const Icon(
+                    icon:  Icon(
                       Icons.favorite,
                       color: Colors.amber,
-                      size: 16,
+                      size: 16.r,
                     ),
                   )
                 ],

@@ -5,6 +5,7 @@ import 'package:ecommerce/features/categories_products/logic/categories_cubit/ca
 import 'package:ecommerce/features/categories_products/logic/categories_cubit/categories_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductCarouselSliderWidget extends StatelessWidget {
   const ProductCarouselSliderWidget({super.key});
@@ -18,7 +19,7 @@ class ProductCarouselSliderWidget extends StatelessWidget {
         var productItem = cubit.productDetailsModel?.data;
         return CarouselSlider(
           options: CarouselOptions(
-            height: 235,
+            height: 235.h,
             autoPlay: true,
             autoPlayAnimationDuration: const Duration(milliseconds: 800),
             autoPlayCurve: Curves.easeInOut,
@@ -30,9 +31,9 @@ class ProductCarouselSliderWidget extends StatelessWidget {
                   onTap: () {},
                   child: Container(
                     width: MediaQuery.of(context).size.width,
-                    margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                    margin:  EdgeInsets.symmetric(horizontal: 5.0.w),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
+                      borderRadius: BorderRadius.circular(10.r),
                       color: Colors.grey[200],
                     ),
                     child: CustomNetworkImage(image: productImages),

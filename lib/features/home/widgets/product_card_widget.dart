@@ -5,6 +5,7 @@ import 'package:ecommerce/features/home/logic/home_cubit/home_cubit.dart';
 import 'package:ecommerce/features/home/logic/home_cubit/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key, required this.index});
@@ -21,14 +22,14 @@ class ProductCard extends StatelessWidget {
         return Card(
           elevation: 4,
           shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Expanded(
                 child: ClipRRect(
                     borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(10)),
+                         BorderRadius.vertical(top: Radius.circular(10.r)),
                     child: CustomNetworkImage(
                         image: cubit.homeModel?.data?.products?[index].images
                                 ?.first ??
@@ -48,13 +49,13 @@ class ProductCard extends StatelessWidget {
                     cubit.homeModel?.data?.products?[index].description ?? "",
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                        fontSize: 12,
+                    style:  TextStyle(
+                        fontSize: 12.sp,
                         fontWeight: FontWeight.w400,
                         color: MyColors.myGrey)),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                padding:  EdgeInsets.symmetric(horizontal: 8.0.w),
                 child: Row(
                   children: [
                     Column(
@@ -81,10 +82,10 @@ class ProductCard extends StatelessWidget {
                     const Spacer(),
                     IconButton(
                       onPressed: () {},
-                      icon: const Icon(
+                      icon:  Icon(
                         Icons.favorite,
                         color: Colors.amber,
-                        size: 16,
+                        size: 16.r,
                       ),
                     )
                   ],

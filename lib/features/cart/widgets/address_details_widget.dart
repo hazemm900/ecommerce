@@ -5,6 +5,7 @@ import 'package:ecommerce/features/address/logic/address_cubit/address_cubit.dar
 import 'package:ecommerce/features/address/logic/address_cubit/address_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class AddressDetailsWidget extends StatelessWidget {
@@ -33,7 +34,7 @@ class AddressDetailsWidget extends StatelessWidget {
                     ),
                   ],
                 ),
-                verticalSpace(10),
+                verticalSpace(10.h),
                 Row(
                   children: [
                     Expanded(
@@ -44,11 +45,11 @@ class AddressDetailsWidget extends StatelessWidget {
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              verticalSpace(10),
+                              verticalSpace(10.h),
                               state is AddressLoadingState
-                                  ? const SpinKitHourGlass(
+                                  ?  SpinKitHourGlass(
                       color: MyColors.myMutedGold,
-                      size: 50.0,
+                      size: 50.0.r,
                     )
                                   : Column(
                                       crossAxisAlignment:
@@ -60,7 +61,7 @@ class AddressDetailsWidget extends StatelessWidget {
                                               .textTheme
                                               .bodySmall,
                                         ),
-                                        verticalSpace(4),
+                                        verticalSpace(4.h),
                                         Text(
                                           cubit.getAddressModel?.data?.getAllAddresses?[0].details ?? "no address set ",
                                           maxLines: 1,

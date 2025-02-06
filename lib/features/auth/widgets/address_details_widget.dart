@@ -5,6 +5,7 @@ import 'package:ecommerce/features/address/logic/address_cubit/address_state.dar
 import 'package:ecommerce/features/auth/widgets/text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AddressDetailsWidget extends StatelessWidget {
   const AddressDetailsWidget({super.key});
@@ -27,7 +28,7 @@ class AddressDetailsWidget extends StatelessWidget {
               "Business Address Details",
               style: Theme.of(context).textTheme.bodyLarge,
             ),
-            verticalSpace(20),
+            verticalSpace(20.h),
             addresses.isEmpty == true
                 ? const Center(child: Text("no addresses added!!!"))
                 : Column(
@@ -36,17 +37,17 @@ class AddressDetailsWidget extends StatelessWidget {
                           label: "address name",
                           hintText: "name...",
                           textEditingController: cubit.nameController),
-                      verticalSpace(28),
+                      verticalSpace(28.h),
                       TextFormFieldWidget(
                           label: "city",
                           hintText: "city...",
                           textEditingController: cubit.cityController),
-                      verticalSpace(28),
+                      verticalSpace(28.h),
                       TextFormFieldWidget(
                           label: "region",
                           hintText: "region...",
                           textEditingController: cubit.regionController),
-                      verticalSpace(28),
+                      verticalSpace(28.h),
                       TextFormFieldWidget(
                           label: "details",
                           hintText: "details...",

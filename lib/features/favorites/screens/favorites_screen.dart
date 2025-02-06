@@ -8,6 +8,7 @@ import 'package:ecommerce/features/favorites/logic/favorites_cubit/favorites_sta
 import 'package:ecommerce/features/favorites/widgets/product_in_favorites_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -19,54 +20,53 @@ class FavoritesScreen extends StatelessWidget {
       bloc: getIt<FavoritesCubit>()..getFavorites(),
       builder: (context, state) {
         var cubit = getIt<FavoritesCubit>();
-        return   Scaffold(
+        return Scaffold(
           appBar: const CustomAppBar(appBarTitle: "Favorites"),
-              body:
-              cubit.favoritesModel == null
-                  ?
-              const Center(
+          body: cubit.favoritesModel == null
+              ? Center(
                   child: SpinKitHourGlass(
                   color: MyColors.myMutedGold,
-                  size: 50.0,
-                )) : Column(
-                children: [
-                  ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: cubit.favoritesModel!.data!.data!.length,
-                    itemBuilder: (context, index) {
-                      return Card(
-                        margin: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 8),
-                        elevation: 4,
-                        child: Padding(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  CustomNetworkImage(
-                                    image: cubit.favoritesModel?.data
-                                        ?.data?[index].product?.image ??
-                                        "",
-                                    width: 130,
-                                    height: 125,
-                                  ),
-                                  horizontalSpace(10),
-                                  ProductInFavoritesDetailsWidget(index: index)
-                                ],
-                              ),
-                            ],
+                  size: 50.0.r,
+                ))
+              : Column(
+                  children: [
+                    ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: cubit.favoritesModel!.data!.data!.length,
+                      itemBuilder: (context, index) {
+                        return Card(
+                          margin: EdgeInsets.symmetric(
+                              horizontal: 16.w, vertical: 8.h),
+                          elevation: 4,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    CustomNetworkImage(
+                                      image: cubit.favoritesModel?.data
+                                              ?.data?[index].product?.image ??
+                                          "",
+                                      width: 130.w,
+                                      height: 125.h,
+                                    ),
+                                    horizontalSpace(10.w),
+                                    ProductInFavoritesDetailsWidget(
+                                        index: index)
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
-                        ),
-                      );
-                    },
-                  ),
-                ],
-              )
-            );
-
+                        );
+                      },
+                    ),
+                  ],
+                ),
+        );
       },
     );
   }

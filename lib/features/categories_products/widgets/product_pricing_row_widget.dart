@@ -5,6 +5,7 @@ import 'package:ecommerce/features/categories_products/logic/categories_cubit/ca
 import 'package:ecommerce/features/categories_products/logic/categories_cubit/categories_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductPricingRowWidget extends StatelessWidget {
   const ProductPricingRowWidget({super.key});
@@ -20,26 +21,26 @@ class ProductPricingRowWidget extends StatelessWidget {
           children: [
             Text(
               "${productItem?.oldPrice.toString() ?? ""} EGP",
-              style: const TextStyle(
+              style: TextStyle(
                   color: MyColors.myLightGrey,
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500,
                   decoration: TextDecoration.lineThrough),
             ),
-            horizontalSpace(8),
+            horizontalSpace(8.w),
             Text(
               "${productItem?.price.toString() ?? ""} EGP",
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.green,
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500),
             ),
-            horizontalSpace(8),
+            horizontalSpace(8.w),
             Text(
               "${productItem?.discount.toString() ?? ""} % Off",
-              style: const TextStyle(
+              style: TextStyle(
                   color: Colors.red,
-                  fontSize: 16,
+                  fontSize: 16.sp,
                   fontWeight: FontWeight.w500),
             ),
           ],

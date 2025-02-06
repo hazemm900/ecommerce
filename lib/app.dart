@@ -8,6 +8,7 @@ import 'package:ecommerce/features/change_theme/change_theme_cubit/change_theme_
 import 'package:ecommerce/features/custom_bottom_nav_bar/screens/custom_bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'core/routes/app_router.dart';
 
@@ -21,20 +22,26 @@ class MyApp extends StatelessWidget {
       child: BlocBuilder<ChangeThemeCubit, ChangeThemeState>(
         builder: (context, state) {
           var cubit = ChangeThemeCubit.get(context);
-          return MaterialApp(
-            title: 'EcommerceApp',
-            localizationsDelegates: context.localizationDelegates,
-            supportedLocales: context.supportedLocales,
-            locale: context.locale,
-            debugShowCheckedModeBanner: false,
-            theme: lightTheme,
-            darkTheme: darkTheme,
-            themeMode: cubit.isDark ? ThemeMode.dark : ThemeMode.light,
-            // home: const RegisterScreen()
-            initialRoute: CacheHelper.getData(key: "token") == null
-                ? Routes.registerScreen
-                : Routes.customBottomNavBarScreen,
-            onGenerateRoute: RouteGenerator.getRoute,
+          return ScreenUtilInit(
+            designSize: const Size(360, 690),
+            minTextAdapt: true,
+            splitScreenMode: true,
+            builder: (_, child) {
+              return MaterialApp(
+                title: 'EcommerceApp',
+                localizationsDelegates: context.localizationDelegates,
+                supportedLocales: context.supportedLocales,
+                locale: context.locale,
+                debugShowCheckedModeBanner: false,
+                theme: lightTheme,
+                darkTheme: darkTheme,
+                themeMode: cubit.isDark ? ThemeMode.dark : ThemeMode.light,
+                initialRoute: CacheHelper.getData(key: "token") == null
+                    ? Routes.registerScreen
+                    : Routes.customBottomNavBarScreen,
+                onGenerateRoute: RouteGenerator.getRoute,
+              );
+            },
           );
         },
       ),

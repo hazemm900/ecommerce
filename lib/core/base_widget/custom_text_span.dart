@@ -1,5 +1,6 @@
 import 'package:ecommerce/core/theme/color.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CustomTextSpan extends StatelessWidget {
   final String firstLabel;
@@ -21,7 +22,7 @@ class CustomTextSpan extends StatelessWidget {
           text: TextSpan(
             text: firstLabel,
             style: TextStyle(
-                fontSize: 14,
+                fontSize: 14.sp,
                 fontWeight: FontWeight.bold,
                 color: Colors.grey.shade500),
             children: <TextSpan>[

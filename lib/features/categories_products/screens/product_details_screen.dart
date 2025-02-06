@@ -14,6 +14,7 @@ import 'package:ecommerce/features/categories_products/widgets/product_carousel_
 import 'package:ecommerce/features/categories_products/widgets/product_pricing_row_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class ProductDetailsScreen extends StatelessWidget {
@@ -31,10 +32,10 @@ class ProductDetailsScreen extends StatelessWidget {
         return Scaffold(
           appBar: const CustomAppBar(appBarTitle: "product Details"),
           body: cubit.productDetailsModel == null
-              ? const Center(
+              ? Center(
                   child: SpinKitHourGlass(
                     color: MyColors.myMutedGold,
-                    size: 50.0,
+                    size: 50.0.r,
                   ),
                 )
               : SingleChildScrollView(
@@ -44,31 +45,31 @@ class ProductDetailsScreen extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         const ProductCarouselSliderWidget(),
-                        verticalSpace(44),
+                        verticalSpace(44.h),
                         Text(
                           productItem?.name ?? "no name",
-                          style: const TextStyle(
+                          style: TextStyle(
                               color: MyColors.myMutedGold,
-                              fontSize: 20,
+                              fontSize: 20.sp,
                               fontWeight: FontWeight.w600),
                         ),
-                        verticalSpace(8),
+                        verticalSpace(8.h),
                         const ProductPricingRowWidget(),
-                        verticalSpace(8),
-                        const Text(
+                        verticalSpace(8.h),
+                        Text(
                           "Product Details",
                           style: TextStyle(
-                              fontSize: 16,
+                              fontSize: 16.sp,
                               fontWeight: FontWeight.w500,
                               decoration: TextDecoration.underline),
                         ),
-                        verticalSpace(4),
+                        verticalSpace(4.h),
                         Text(
                           productItem?.description ?? "no description",
-                          style: const TextStyle(
-                              fontSize: 14, fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              fontSize: 14.sp, fontWeight: FontWeight.w500),
                         ),
-                        verticalSpace(12),
+                        verticalSpace(12.h),
                         Row(
                           children: [
                             productItem?.inCart == false
@@ -89,7 +90,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                           Icons.remove_shopping_cart_outlined,
                                     ),
                                   ),
-                            horizontalSpace(12),
+                            horizontalSpace(12.w),
                             productItem?.inFavorites == false
                                 ? Expanded(
                                     child: FavoriteButtonWidget(
@@ -108,7 +109,7 @@ class ProductDetailsScreen extends StatelessWidget {
                                   ),
                           ],
                         ),
-                        verticalSpace(12),
+                        verticalSpace(12.h),
                       ],
                     ),
                   ),

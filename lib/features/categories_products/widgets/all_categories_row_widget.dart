@@ -7,6 +7,7 @@ import 'package:ecommerce/features/categories_products/screens/category_details_
 import 'package:ecommerce/features/categories_products/widgets/category_widget_item.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AllCategoriesRowWidget extends StatelessWidget {
   const AllCategoriesRowWidget({super.key});
@@ -21,7 +22,7 @@ class AllCategoriesRowWidget extends StatelessWidget {
           return cubit.categoriesModel== null
               ? const SizedBox()
               : SizedBox(
-                  height: 150,
+                  height: 150.h,
                   child: ListView.separated(
                     padding: const EdgeInsets.all(8),
                     scrollDirection: Axis.horizontal,
@@ -51,7 +52,7 @@ class AllCategoriesRowWidget extends StatelessWidget {
                       );
                     },
                     separatorBuilder: (BuildContext context, int index) {
-                      return horizontalSpace(16);
+                      return horizontalSpace(16.w);
                     },
                   ),
                 );

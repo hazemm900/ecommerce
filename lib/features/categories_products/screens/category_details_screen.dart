@@ -6,6 +6,7 @@ import 'package:ecommerce/features/categories_products/logic/categories_cubit/ca
 import 'package:ecommerce/features/categories_products/logic/categories_cubit/categories_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 class CategoryDetailsScreen extends StatelessWidget {
@@ -28,10 +29,10 @@ class CategoryDetailsScreen extends StatelessWidget {
           return Scaffold(
             appBar: CustomAppBar(appBarTitle: categoryName),
             body: cubit.categoryDetailsModel == null
-                ? const Center(
+                ?  Center(
                     child: SpinKitHourGlass(
                     color: MyColors.myMutedGold,
-                    size: 50.0,
+                    size: 50.0.r,
                   ))
                 : GridView.builder(
                     itemCount: cubit.categoryDetailsModel?.data

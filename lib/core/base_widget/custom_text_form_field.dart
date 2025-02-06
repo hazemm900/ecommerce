@@ -3,6 +3,7 @@ import 'package:ecommerce/core/base_widget/logic/obscure_text_cubit/obscure_text
 import 'package:ecommerce/core/theme/color.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 
 
@@ -55,16 +56,16 @@ class CustomTextFormField extends StatelessWidget {
                 color: MyColors.myLightGrey,
               ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20), // Rounded corners
+                borderRadius: BorderRadius.circular(20.r), // Rounded corners
                 borderSide: BorderSide.none, // Remove border
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20), // Rounded corners
+                borderRadius: BorderRadius.circular(20.r), // Rounded corners
                 borderSide: const BorderSide(color: Colors.black), // Black border on focus
               ),
-              contentPadding: const EdgeInsets.symmetric(
-                vertical: 16, // Adjust padding
-                horizontal: 20,
+              contentPadding:  EdgeInsets.symmetric(
+                vertical: 16.h, // Adjust padding
+                horizontal: 20.w,
               ),
             ),
           );
@@ -88,16 +89,16 @@ class CustomTextFormField extends StatelessWidget {
             : null,
         suffixIconColor: MyColors.myLightGrey,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20), // Rounded corners
+          borderRadius: BorderRadius.circular(20.r), // Rounded corners
           borderSide: BorderSide.none, // Remove border
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20), // Rounded corners
+          borderRadius: BorderRadius.circular(20.r), // Rounded corners
           borderSide: const BorderSide(color: Colors.black), // Black border on focus
         ),
-        contentPadding: const EdgeInsets.symmetric(
-          vertical: 16, // Adjust padding
-          horizontal: 20,
+        contentPadding:  EdgeInsets.symmetric(
+          vertical: 16.h, // Adjust padding
+          horizontal: 20.w,
         ),
       ),
     );

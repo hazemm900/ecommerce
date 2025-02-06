@@ -10,6 +10,7 @@ import 'package:ecommerce/features/address/screens/add_address_screen.dart';
 import 'package:ecommerce/features/address/screens/update_address_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class AllAddressesScreen extends StatelessWidget {
   const AllAddressesScreen({super.key});
@@ -61,8 +62,7 @@ class AllAddressesScreen extends StatelessWidget {
                                                 builder: (context) =>
                                                     UpdateAddressScreen(
                                                       addressId:
-                                                          addresses[index]
-                                                                  .id ??
+                                                          addresses[index].id ??
                                                               0,
                                                     )));
                                       },
@@ -72,8 +72,8 @@ class AllAddressesScreen extends StatelessWidget {
                                       )),
                                   IconButton(
                                       onPressed: () {
-                                        cubit.deleteAddress(context,
-                                            addresses[index].id ?? 0);
+                                        cubit.deleteAddress(
+                                            context, addresses[index].id ?? 0);
                                       },
                                       icon: const Icon(
                                         Icons.delete_outline,
@@ -95,14 +95,13 @@ class AllAddressesScreen extends StatelessWidget {
                                   "Details:${address.details ?? "No details"}"),
                             );
                           },
-                          separatorBuilder:
-                              (BuildContext context, int index) {
+                          separatorBuilder: (BuildContext context, int index) {
                             return const Divider(
                               color: MyColors.myMutedGold,
                             );
                           },
                         ),
-                        verticalSpace(100),
+                        verticalSpace(100.h),
                         CustomElevatedButton(
                             label: "Add New Address",
                             onPress: () {

@@ -5,6 +5,7 @@ import 'package:ecommerce/features/cart/logic/cart_cubit/carts_cubit.dart';
 import 'package:ecommerce/features/cart/logic/cart_cubit/carts_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class ProductInCartDetailsWidget extends StatelessWidget {
   const ProductInCartDetailsWidget({super.key, required this.index});
@@ -25,7 +26,7 @@ class ProductInCartDetailsWidget extends StatelessWidget {
                 cubit.getCartModel?.data?.cartItems?[index].product?.name ?? "",
                 style: Theme.of(context).textTheme.displayMedium,
               ),
-              verticalSpace(5),
+              verticalSpace(5.h),
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
@@ -36,13 +37,13 @@ class ProductInCartDetailsWidget extends StatelessWidget {
                       Icons.minimize,
                     ),
                   ),
-                  horizontalSpace(4),
+                  horizontalSpace(4.w),
                   Text(
                     cubit.getCartModel?.data?.cartItems?[index].quantity
                             .toString() ??
                         "",
                   ),
-                  horizontalSpace(4),
+                  horizontalSpace(4.w),
                   IconButton(
                     color: MyColors.myMutedGold,
                     onPressed: () {},
@@ -52,17 +53,17 @@ class ProductInCartDetailsWidget extends StatelessWidget {
                   ),
                 ],
               ),
-              verticalSpace(10),
+              verticalSpace(10.h),
               Row(
                 children: [
                   Text(
                     "${cubit.getCartModel?.data?.cartItems?[index].product?.price.toString() ?? ""} EGP",
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 16,
+                        fontSize: 16.sp,
                         color: Colors.green),
                   ),
-                  horizontalSpace(16),
+                  horizontalSpace(16.w),
                   cubit.getCartModel?.data?.cartItems?[index].product
                               ?.discount ==
                           0
@@ -73,7 +74,7 @@ class ProductInCartDetailsWidget extends StatelessWidget {
                               'up to ${cubit.getCartModel?.data?.cartItems?[index].product?.discount}% off',
                               style: const TextStyle(color: Colors.red),
                             ),
-                            verticalSpace(4),
+                            verticalSpace(4.h),
                             Text(
                               "${cubit.getCartModel?.data?.cartItems?[index].product?.oldPrice.toString() ?? ""} EGP",
                               style: const TextStyle(

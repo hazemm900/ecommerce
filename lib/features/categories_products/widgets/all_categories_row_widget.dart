@@ -15,11 +15,11 @@ class AllCategoriesRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => getIt<CategoriesCubit>(),
+      create: (context) => getIt<CategoriesCubit>()..getCategories(),
       child: BlocBuilder<CategoriesCubit, CategoriesState>(
         builder: (context, state) {
           var cubit = CategoriesCubit.get(context);
-          return cubit.categoriesModel== null
+          return cubit.categoriesModel == null
               ? const SizedBox()
               : SizedBox(
                   height: 150.h,

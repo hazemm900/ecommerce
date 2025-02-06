@@ -1,5 +1,6 @@
 import 'package:ecommerce/core/base_widget/custom_app_bar.dart';
 import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
+import 'package:ecommerce/core/helper/change_lang.dart';
 import 'package:ecommerce/core/routes/routes.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/features/address/screens/add_address_screen.dart';
@@ -37,6 +38,7 @@ class SettingsScreen extends StatelessWidget {
                                 .pushNamed(Routes.allAddressesScreen);
                           },
                         ),
+                        const ChangeLang(),
                         const FaqsScreen(),
                         const AboutTermsWidget(),
                       ],

@@ -28,44 +28,46 @@ class FavoritesScreen extends StatelessWidget {
                   color: MyColors.myMutedGold,
                   size: 50.0.r,
                 ))
-              : Column(
-                  children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemCount: cubit.favoritesModel!.data!.data!.length,
-                      itemBuilder: (context, index) {
-                        return Card(
-                          margin: EdgeInsets.symmetric(
-                              horizontal: 16.w, vertical: 8.h),
-                          elevation: 4,
-                          child: Padding(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              children: [
-                                Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    CustomNetworkImage(
-                                      image: cubit.favoritesModel?.data
-                                              ?.data?[index].product?.image ??
-                                          "",
-                                      width: 130.w,
-                                      height: 125.h,
-                                    ),
-                                    horizontalSpace(10.w),
-                                    ProductInFavoritesDetailsWidget(
-                                        index: index)
-                                  ],
-                                ),
-                              ],
+              : SingleChildScrollView(
+                child: Column(
+                    children: [
+                      ListView.builder(
+                        shrinkWrap: true,
+                        physics: const NeverScrollableScrollPhysics(),
+                        itemCount: cubit.favoritesModel!.data!.data!.length,
+                        itemBuilder: (context, index) {
+                          return Card(
+                            margin: EdgeInsets.symmetric(
+                                horizontal: 16.w, vertical: 8.h),
+                            elevation: 4,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      CustomNetworkImage(
+                                        image: cubit.favoritesModel?.data
+                                                ?.data?[index].product?.image ??
+                                            "",
+                                        width: 130.w,
+                                        height: 125.h,
+                                      ),
+                                      horizontalSpace(10.w),
+                                      ProductInFavoritesDetailsWidget(
+                                          index: index)
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                ),
+                          );
+                        },
+                      ),
+                    ],
+                  ),
+              ),
         );
       },
     );

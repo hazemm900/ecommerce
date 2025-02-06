@@ -39,22 +39,24 @@ class ProductInFavoritesDetailsWidget extends StatelessWidget {
                   cubit.favoritesModel?.data?.data?[index].product?.discount ==
                           0
                       ? const SizedBox()
-                      : Column(
-                          children: [
-                            Text(
-                              'up to ${cubit.favoritesModel?.data?.data?[index].product?.discount}% off',
-                              style: const TextStyle(color: Colors.red),
-                            ),
-                            verticalSpace(4.h),
-                            Text(
-                              "${cubit.favoritesModel?.data?.data?[index].product?.oldPrice.toString() ?? ""} EGP",
-                              style: const TextStyle(
-                                decoration: TextDecoration.lineThrough,
-                                color: Colors.grey,
+                      : Flexible(
+                        child: Column(
+                            children: [
+                              Text(
+                                'up to ${cubit.favoritesModel?.data?.data?[index].product?.discount}% off',
+                                style: const TextStyle(color: Colors.red),
                               ),
-                            ),
-                          ],
-                        ),
+                              verticalSpace(4.h),
+                              Text(
+                                "${cubit.favoritesModel?.data?.data?[index].product?.oldPrice.toString() ?? ""} EGP",
+                                style: const TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                      ),
                 ],
               ),
             ],

@@ -68,22 +68,24 @@ class ProductInCartDetailsWidget extends StatelessWidget {
                               ?.discount ==
                           0
                       ? const SizedBox()
-                      : Column(
-                          children: [
-                            Text(
-                              'up to ${cubit.getCartModel?.data?.cartItems?[index].product?.discount}% off',
-                              style: const TextStyle(color: Colors.red),
-                            ),
-                            verticalSpace(4.h),
-                            Text(
-                              "${cubit.getCartModel?.data?.cartItems?[index].product?.oldPrice.toString() ?? ""} EGP",
-                              style: const TextStyle(
-                                decoration: TextDecoration.lineThrough,
-                                color: Colors.grey,
+                      : Flexible(
+                        child: Column(
+                            children: [
+                              Text(
+                                'up to ${cubit.getCartModel?.data?.cartItems?[index].product?.discount}% off',
+                                style: const TextStyle(color: Colors.red),
                               ),
-                            ),
-                          ],
-                        ),
+                              verticalSpace(4.h),
+                              Text(
+                                "${cubit.getCartModel?.data?.cartItems?[index].product?.oldPrice.toString() ?? ""} EGP",
+                                style: const TextStyle(
+                                  decoration: TextDecoration.lineThrough,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ],
+                          ),
+                      ),
                 ],
               ),
             ],

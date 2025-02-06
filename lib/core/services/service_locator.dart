@@ -46,7 +46,8 @@ Future<void> setupGetIt() async {
 
   getIt.registerLazySingleton(() => AddressRepo(getIt()));
 
-  getIt.registerLazySingleton<AddressWebServices>(() => AddressWebServices(dio));
+  getIt
+      .registerLazySingleton<AddressWebServices>(() => AddressWebServices(dio));
 
   // ================ Settings ================ //
   getIt.registerFactory(() => SettingCubit(getIt()));
@@ -57,21 +58,23 @@ Future<void> setupGetIt() async {
       () => SettingsWebServices(dio));
 
   // ================ Categories ================ //
-  getIt.registerLazySingleton(() => CategoriesCubit(getIt())..getCategories());
+  getIt.registerFactory(() => CategoriesCubit(getIt()));
 
   getIt.registerLazySingleton(() => CategoriesRepo(getIt()));
 
-  getIt.registerLazySingleton<CategoriesWebServices>(() => CategoriesWebServices(dio));
+  getIt.registerLazySingleton<CategoriesWebServices>(
+      () => CategoriesWebServices(dio));
 
   // ================ Home ================ //
-  getIt.registerLazySingleton(() => HomeCubit(getIt())..getHome());
+  getIt.registerFactory(() => HomeCubit(getIt()));
 
   getIt.registerLazySingleton(() => HomeRepo(getIt()));
 
   getIt.registerLazySingleton<HomeWebServices>(() => HomeWebServices(dio));
 
   // ================ FAQS ================ //
-  getIt.registerLazySingleton(() => FaqsCubit(getIt())); // 3amlha kda 3shan mfdlsh a3ml load ll data kol ma adkhol el page w m3aha bstkhdm el (bloc: getIt<HomeCubit>()..getHome(context), )
+  getIt.registerLazySingleton(() => FaqsCubit(
+      getIt())); // 3amlha kda 3shan mfdlsh a3ml load ll data kol ma adkhol el page w m3aha bstkhdm el (bloc: getIt<HomeCubit>()..getHome(context), )
 
   getIt.registerLazySingleton(() => FaqsRepo(getIt()));
 
@@ -89,6 +92,6 @@ Future<void> setupGetIt() async {
 
   getIt.registerLazySingleton(() => FavoritesRepo(getIt()));
 
-  getIt.registerLazySingleton<FavoritesWebServices>(() => FavoritesWebServices(dio));
-
+  getIt.registerLazySingleton<FavoritesWebServices>(
+      () => FavoritesWebServices(dio));
 }

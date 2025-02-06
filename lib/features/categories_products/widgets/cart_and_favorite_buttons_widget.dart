@@ -26,7 +26,7 @@ class CartAndFavoritesButtonsWidget extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
             style: ElevatedButton.styleFrom(
-              minimumSize: Size(double.infinity, 50.w),
+              minimumSize: Size(double.infinity, 50.h),
               backgroundColor: buttonColor,
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.r),

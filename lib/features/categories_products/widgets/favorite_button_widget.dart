@@ -28,7 +28,7 @@ class FavoriteButtonWidget extends StatelessWidget {
       builder: (context, state) {
         return ElevatedButton(
           style: ElevatedButton.styleFrom(
-            minimumSize: Size(double.infinity, 50.w),
+            minimumSize: Size(double.infinity, 50.h),
             backgroundColor: buttonColor,
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(30.r),
@@ -40,12 +40,15 @@ class FavoriteButtonWidget extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text(
-                buttonLabel,
-                style: TextStyle(
-                    fontSize: 14.sp,
-                    fontWeight: FontWeight.w700,
-                    color: Colors.white),
+              Flexible(
+                child: Text(
+                  buttonLabel,
+                  overflow: TextOverflow.ellipsis,
+                  style: TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.white),
+                ),
               ),
               horizontalSpace(8.w),
               Icon(

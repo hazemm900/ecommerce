@@ -22,7 +22,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
         style:  TextStyle(
           color: MyColors.myMutedGold,
           fontWeight: FontWeight.bold,
-          fontSize: 24.sp,
+          fontSize: 18.sp,
         ),
       ),
       actions: [

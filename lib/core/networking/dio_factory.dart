@@ -7,35 +7,39 @@ class DioFactory {
 
   static Dio? dio;
 
-  static Dio getDio() {
-    Duration timeOut = const Duration(seconds: 100);
-    dio ??= Dio()
-      ..options.connectTimeout = timeOut
-      ..options.receiveTimeout = timeOut;
+  static Future<Dio> getDio() async {
+    if (dio == null) {
+      Duration timeOut = const Duration(seconds: 100);
+      dio = Dio()
+        ..options.connectTimeout = timeOut
+        ..options.receiveTimeout = timeOut;
 
-    addDioHeaders(); // Ensure headers are added when Dio is initialized
-    addDioInterceptor();
-
+      await addDioHeaders(); // Ensure headers are set on initialization
+      addDioInterceptor();
+    }
     return dio!;
   }
 
   static Future<void> addDioHeaders() async {
-    String? lang =
+    String lang =
         await CacheHelper.getData(key: "lang") ?? "en"; // Default to English
-    dio?.options.headers = {
-      'Authorization': '${await CacheHelper.getData(key: "token")}',
-      'Accept': 'application/json',
-      "lang": lang, // Add the language to the headers
-    };
-  }
+    String? token = await CacheHelper.getData(key: "token");
 
-  static Future<void> setTokenIntoHeaderAfterLogin(String token) async {
-    String? lang = await CacheHelper.getData(key: "lang") ?? "en";
     dio?.options.headers = {
-      'Authorization': '$token',
+      'Authorization': token ?? "",
       'Accept': 'application/json',
       "lang": lang,
     };
+  }
+
+  static Future<void> updateLanguageHeader(String newLang) async {
+    await CacheHelper.saveData(key: "lang", value: newLang);
+    await addDioHeaders(); // Update Dio headers immediately
+  }
+
+  static Future<void> setTokenIntoHeaderAfterLogin(String token) async {
+    await CacheHelper.saveData(key: "token", value: token);
+    await addDioHeaders(); // Ensures token is updated correctly
   }
 
   static void addDioInterceptor() {

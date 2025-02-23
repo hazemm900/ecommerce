@@ -1,4 +1,5 @@
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
+import 'package:ecommerce/core/base_widget/custom_material_button.dart';
+import 'package:ecommerce/core/base_widget/logic/obscure_text_cubit/obscure_text_cubit.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/features/auth/logic/auth_cubit/auth_cubit.dart';
@@ -31,11 +32,14 @@ class LoginScreen extends StatelessWidget {
                       hintText: "Enter your email",
                       textEditingController: cubit.emailController),
                   verticalSpace(26.h),
-                  TextFormFieldWidget(
-                      label: "Password",
-                      hintText: "Enter your password",
-                      isPasswordField: true,
-                      textEditingController: cubit.passwordController),
+                  BlocProvider(
+                    create: (context) => ObscureTextCubit(),
+                    child: TextFormFieldWidget(
+                        label: "Password",
+                        hintText: "Enter your password",
+                        isPasswordField: true,
+                        textEditingController: cubit.passwordController),
+                  ),
                   verticalSpace(16.h),
                   const ForgetPasswordSpacerWidget(),
                   verticalSpace(38.h),
@@ -43,7 +47,7 @@ class LoginScreen extends StatelessWidget {
                   verticalSpace(28.h),
                   const SocialMediaRowWidget(),
                   verticalSpace(100.h),
-                  CustomElevatedButton(
+                  CustomMaterialButton(
                       label: "Login",
                       onPress: () {
                         cubit.logIn(context);

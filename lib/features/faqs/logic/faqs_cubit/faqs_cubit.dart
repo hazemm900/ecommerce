@@ -1,4 +1,3 @@
-import 'package:ecommerce/features/faqs/data/apis/api_faqs.dart';
 import 'package:ecommerce/features/faqs/data/model/faqs_model.dart';
 import 'package:ecommerce/features/faqs/data/repo/faqs_repo.dart';
 import 'package:ecommerce/features/faqs/logic/faqs_cubit/faqs_state.dart';

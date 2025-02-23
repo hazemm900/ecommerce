@@ -1,12 +1,11 @@
 import 'package:ecommerce/core/base_widget/custom_app_bar.dart';
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
+import 'package:ecommerce/core/base_widget/custom_material_button.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:ecommerce/core/routes/routes.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/core/theme/color.dart';
 import 'package:ecommerce/features/address/logic/address_cubit/address_cubit.dart';
 import 'package:ecommerce/features/address/logic/address_cubit/address_state.dart';
-import 'package:ecommerce/features/address/screens/add_address_screen.dart';
 import 'package:ecommerce/features/address/screens/update_address_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,18 +17,18 @@ class AllAddressesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AddressCubit, AddressState>(
-      bloc: getIt<AddressCubit>(),
+      bloc: AddressCubit(getIt())..getAllAddresses(),
       builder: (context, state) {
         var cubit = getIt<AddressCubit>();
         final addresses = cubit.getAddressModel?.data?.getAllAddresses ?? [];
 
         return Scaffold(
           appBar: const CustomAppBar(
-            appBarTitle: "All Addresses",
+            title: "All Addresses",
           ),
-          body: addresses.isEmpty
+          body: state is AddressLoadingState
               ? const Center(
-                  child: Text("No addresses found."),
+                  child: CircularProgressIndicator(),
                 )
               : Padding(
                   padding: const EdgeInsets.all(24.0),
@@ -40,6 +39,7 @@ class AllAddressesScreen extends StatelessWidget {
                           "Addresses Details",
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
+                        verticalSpace(16.h),
                         ListView.separated(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),
@@ -85,14 +85,28 @@ class AllAddressesScreen extends StatelessWidget {
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(
-                                      "Location name: ${address.name ?? "No name"}"),
+                                    "Location name: ${address.name ?? "No name"}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(fontSize: 12.sp),
+                                  ),
                                   verticalSpace(8),
                                   Text(
-                                      "City name: ${address.city ?? "No city"}"),
+                                    "City name: ${address.city ?? "No city"}",
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(fontSize: 12.sp),
+                                  ),
+                                  Text(
+                                      "Details:${address.details ?? "No details"}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .bodySmall!
+                                          .copyWith(fontSize: 12.sp)),
                                 ],
                               ),
-                              subtitle: Text(
-                                  "Details:${address.details ?? "No details"}"),
                             );
                           },
                           separatorBuilder: (BuildContext context, int index) {
@@ -102,7 +116,7 @@ class AllAddressesScreen extends StatelessWidget {
                           },
                         ),
                         verticalSpace(100.h),
-                        CustomElevatedButton(
+                        CustomMaterialButton(
                             label: "Add New Address",
                             onPress: () {
                               Navigator.of(context, rootNavigator: true)

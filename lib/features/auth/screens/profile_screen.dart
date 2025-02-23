@@ -1,11 +1,9 @@
 import 'package:ecommerce/core/base_widget/custom_app_bar.dart';
 import 'package:ecommerce/core/base_widget/custom_cached_network_image.dart';
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
+import 'package:ecommerce/core/base_widget/custom_material_button.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
-import 'package:ecommerce/core/routes/routes.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/core/theme/color.dart';
-import 'package:ecommerce/features/address/screens/all_addresses_screen.dart';
 import 'package:ecommerce/features/auth/logic/auth_cubit/auth_cubit.dart';
 import 'package:ecommerce/features/auth/logic/auth_cubit/auth_state.dart';
 import 'package:ecommerce/features/auth/widgets/address_details_widget.dart';
@@ -27,7 +25,7 @@ class ProfileScreen extends StatelessWidget {
           var cubit = AuthCubit.get(context);
           return Scaffold(
             appBar: const CustomAppBar(
-              appBarTitle: "Profile",
+              title: "Profile",
             ),
             body: state is ProfileLoadingState
                 ? Center(
@@ -62,7 +60,7 @@ class ProfileScreen extends StatelessWidget {
                           verticalSpace(28.h),
                           const AddressDetailsWidget(),
                           verticalSpace(34.h),
-                          CustomElevatedButton(
+                          CustomMaterialButton(
                             label: "Log Out",
                             onPress: () {
                               cubit.logOut(context);

@@ -5,99 +5,80 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-
-
 class CustomTextFormField extends StatelessWidget {
-  final TextEditingController textEditingController;
+  final TextEditingController controller;
   final String hintText;
   final Icon? prefixIcon;
   final Icon? suffixIcon;
   final VoidCallback? onPressSuffix;
-  final TextInputType? textInputType;
-  final bool isPasswordField;
+  final TextInputType? keyboardType;
+  final bool isPassword;
+  final String? Function(String?)? validator;
+  final bool isEnabled;
+  final TextStyle? textStyle;
 
   const CustomTextFormField({
     super.key,
-    required this.textEditingController,
+    required this.controller,
     required this.hintText,
     this.prefixIcon,
     this.suffixIcon,
-    this.textInputType = TextInputType.emailAddress,
-    this.isPasswordField = false,
     this.onPressSuffix,
+    this.keyboardType = TextInputType.emailAddress,
+    this.isPassword = false,
+    this.validator,
+    this.isEnabled = true,
+    this.textStyle,
   });
 
   @override
   Widget build(BuildContext context) {
-    return isPasswordField
-        ? BlocProvider(
-      create: (context) => ObscureTextCubit(),
-      child: BlocBuilder<ObscureTextCubit, ObscureTextState>(
-        builder: (context, state) {
-          var cubit = ObscureTextCubit.get(context);
-          return TextFormField(
-            controller: textEditingController,
-            keyboardType: textInputType,
-            obscureText: cubit.obscureText,
-            cursorColor: Colors.grey,
-            style: const TextStyle(color: Colors.black),
-            decoration: InputDecoration(
-              filled: true,
-              fillColor: MyColors.myLightGreyForTextForm, // Light grey background
-              hintText: hintText,
-              hintStyle: const TextStyle(color: MyColors.myLightGrey),
-              prefixIcon: prefixIcon,
-              prefixIconColor: MyColors.myLightGrey,
-              suffixIcon: IconButton(
-                onPressed: () {
-                  cubit.togglePasswordIcon();
-                },
-                icon: cubit.suffixIcon,
-                color: MyColors.myLightGrey,
-              ),
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.r), // Rounded corners
-                borderSide: BorderSide.none, // Remove border
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(20.r), // Rounded corners
-                borderSide: const BorderSide(color: Colors.black), // Black border on focus
-              ),
-              contentPadding:  EdgeInsets.symmetric(
-                vertical: 16.h, // Adjust padding
-                horizontal: 20.w,
-              ),
-            ),
-          );
-        },
-      ),
-    )
-        : TextFormField(
-      controller: textEditingController,
-      keyboardType: textInputType,
+    return isPassword
+        ? BlocBuilder<ObscureTextCubit, ObscureTextState>(
+            builder: (context, state) {
+              var cubit = BlocProvider.of<ObscureTextCubit>(context);
+              return _buildTextField(
+                context,
+                obscureText: cubit.obscureText,
+                suffixIcon: IconButton(
+                  onPressed: cubit.togglePasswordIcon,
+                  icon: cubit.suffixIcon,
+                  color: MyColors.myLightGrey,
+                ),
+              );
+            },
+          )
+        : _buildTextField(context, suffixIcon: suffixIcon);
+  }
+
+  Widget _buildTextField(BuildContext context,
+      {bool obscureText = false, Widget? suffixIcon}) {
+    return TextFormField(
+      controller: controller,
+      keyboardType: keyboardType,
+      obscureText: obscureText,
       cursorColor: MyColors.myLightGrey,
-      style: const TextStyle(color: Colors.black),
+      style: textStyle ?? const TextStyle(color: Colors.black),
+      validator: validator,
+      enabled: isEnabled,
       decoration: InputDecoration(
         filled: true,
-        fillColor: MyColors.myLightGreyForTextForm, // Light grey background
+        fillColor: MyColors.myLightGreyForTextForm,
         hintText: hintText,
         hintStyle: const TextStyle(color: MyColors.myLightGrey),
         prefixIcon: prefixIcon,
         prefixIconColor: MyColors.myLightGrey,
-        suffixIcon: suffixIcon != null
-            ? IconButton(onPressed: onPressSuffix, icon: suffixIcon!)
-            : null,
-        suffixIconColor: MyColors.myLightGrey,
+        suffixIcon: suffixIcon,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.r), // Rounded corners
-          borderSide: BorderSide.none, // Remove border
+          borderRadius: BorderRadius.circular(20.r),
+          borderSide: BorderSide.none,
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(20.r), // Rounded corners
-          borderSide: const BorderSide(color: Colors.black), // Black border on focus
+          borderRadius: BorderRadius.circular(20.r),
+          borderSide: const BorderSide(color: Colors.black),
         ),
-        contentPadding:  EdgeInsets.symmetric(
-          vertical: 16.h, // Adjust padding
+        contentPadding: EdgeInsets.symmetric(
+          vertical: 16.h,
           horizontal: 20.w,
         ),
       ),

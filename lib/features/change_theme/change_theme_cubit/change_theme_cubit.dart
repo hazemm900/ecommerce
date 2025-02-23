@@ -6,12 +6,17 @@ class ChangeThemeCubit extends Cubit<ChangeThemeState> {
   ChangeThemeCubit() : super(ChangeThemeInitial());
 
   static ChangeThemeCubit get(context) => BlocProvider.of(context);
-  bool isDark = CacheHelper.getData(key: "isDark") ?? false ;
 
-  changeTheme(){
-    isDark =!isDark;
+  bool isDark = false; // Default mode is light
+
+  void loadTheme() {
+    isDark = CacheHelper.getData(key: "isDark") ?? false;
+    emit(ChangeThemeSuccessState());
+  }
+
+  void changeTheme() {
+    isDark = !isDark;
     CacheHelper.saveData(key: "isDark", value: isDark);
-
     emit(ChangeThemeSuccessState());
   }
 }

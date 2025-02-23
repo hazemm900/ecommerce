@@ -1,7 +1,5 @@
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
-import 'package:ecommerce/features/cart/logic/cart_cubit/carts_cubit.dart';
-import 'package:ecommerce/features/cart/logic/cart_cubit/carts_state.dart';
 import 'package:ecommerce/features/favorites/logic/favorites_cubit/favorites_cubit.dart';
 import 'package:ecommerce/features/favorites/logic/favorites_cubit/favorites_state.dart';
 import 'package:flutter/material.dart';

@@ -27,9 +27,9 @@ class CategoryDetailsScreen extends StatelessWidget {
           var itemDetails =
               cubit.categoryDetailsModel?.data?.categoryItemDetails;
           return Scaffold(
-            appBar: CustomAppBar(appBarTitle: categoryName),
+            appBar: CustomAppBar(title: categoryName),
             body: cubit.categoryDetailsModel == null
-                ?  Center(
+                ? Center(
                     child: SpinKitHourGlass(
                     color: MyColors.myMutedGold,
                     size: 50.0.r,

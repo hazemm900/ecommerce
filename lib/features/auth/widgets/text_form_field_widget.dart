@@ -30,10 +30,10 @@ class TextFormFieldWidget extends StatelessWidget {
         ),
         verticalSpace(6.h),
         CustomTextFormField(
-          textEditingController: textEditingController,
+          controller: textEditingController,
           hintText: hintText,
-          textInputType: textInputType, // Pass the keyboard type
-          isPasswordField: isPasswordField, // Pass the password field flag
+          keyboardType: textInputType, // Pass the keyboard type
+          isPassword: isPasswordField, // Pass the password field flag
         ),
       ],
     );

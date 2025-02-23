@@ -1,4 +1,5 @@
 import 'package:ecommerce/core/services/service_locator.dart';
+import 'package:ecommerce/core/theme/color.dart';
 import 'package:ecommerce/features/faqs/logic/faqs_cubit/faqs_cubit.dart';
 import 'package:ecommerce/features/faqs/logic/faqs_cubit/faqs_state.dart';
 import 'package:flutter/material.dart';
@@ -16,18 +17,34 @@ class FaqsScreen extends StatelessWidget {
         return getIt<FaqsCubit>().faqsModel == null
             ? const SizedBox()
             : ExpansionTile(
+                textColor: MyColors.myMutedBlue,
                 title: const Text("Most Popular questions"),
                 children: [
                     ListView.builder(
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
-                        itemCount: getIt<FaqsCubit>().faqsModel?.data?.faqsAnswerItem?.length,
+                        itemCount: getIt<FaqsCubit>()
+                            .faqsModel
+                            ?.data
+                            ?.faqsAnswerItem
+                            ?.length,
                         itemBuilder: (context, index) {
                           return ExpansionTile(
-                            title: Text(getIt<FaqsCubit>().faqsModel?.data?.faqsAnswerItem?[index].question ?? ""),
+                            textColor: MyColors.myMutedBlue,
+                            title: Text(getIt<FaqsCubit>()
+                                    .faqsModel
+                                    ?.data
+                                    ?.faqsAnswerItem?[index]
+                                    .question ??
+                                ""),
                             children: [
                               ListTile(
-                                title: Text(getIt<FaqsCubit>().faqsModel?.data?.faqsAnswerItem?[index].answer ?? ""),
+                                title: Text(getIt<FaqsCubit>()
+                                        .faqsModel
+                                        ?.data
+                                        ?.faqsAnswerItem?[index]
+                                        .answer ??
+                                    ""),
                               )
                             ],
                           );

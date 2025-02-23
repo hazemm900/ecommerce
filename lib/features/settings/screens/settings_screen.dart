@@ -1,10 +1,8 @@
 import 'package:ecommerce/core/base_widget/custom_app_bar.dart';
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
 import 'package:ecommerce/core/helper/change_lang.dart';
 import 'package:ecommerce/core/routes/routes.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
-import 'package:ecommerce/features/address/screens/add_address_screen.dart';
-import 'package:ecommerce/features/categories_products/screens/product_details_screen.dart';
+import 'package:ecommerce/features/change_theme/widget/change_theme_widget.dart';
 import 'package:ecommerce/features/faqs/screens/faqs_screen.dart';
 import 'package:ecommerce/features/settings/logic/setting_cubit/setting_cubit.dart';
 import 'package:ecommerce/features/settings/logic/setting_cubit/setting_state.dart';
@@ -23,7 +21,7 @@ class SettingsScreen extends StatelessWidget {
         builder: (context, state) {
           var cubit = SettingCubit.get(context);
           return Scaffold(
-              appBar: const CustomAppBar(appBarTitle: "settings"),
+              appBar: const CustomAppBar(title: "settings"),
               body: SingleChildScrollView(
                 child: Padding(
                   padding: const EdgeInsets.all(24.0),
@@ -39,6 +37,7 @@ class SettingsScreen extends StatelessWidget {
                           },
                         ),
                         const ChangeLang(),
+                        const ChangeThemeWidget(),
                         const FaqsScreen(),
                         const AboutTermsWidget(),
                       ],

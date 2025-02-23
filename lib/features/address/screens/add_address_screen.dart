@@ -1,11 +1,10 @@
 import 'package:ecommerce/core/base_widget/custom_app_bar.dart';
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
+import 'package:ecommerce/core/base_widget/custom_material_button.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:ecommerce/core/routes/routes.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/features/address/logic/address_cubit/address_cubit.dart';
 import 'package:ecommerce/features/address/logic/address_cubit/address_state.dart';
-import 'package:ecommerce/features/address/screens/all_addresses_screen.dart';
 import 'package:ecommerce/features/auth/widgets/text_form_field_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +20,7 @@ class AddAddressScreen extends StatelessWidget {
       builder: (context, state) {
         var cubit = getIt<AddressCubit>();
         return Scaffold(
-          appBar: const CustomAppBar(appBarTitle: "Add Address"),
+          appBar: const CustomAppBar(title: "Add Address"),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
@@ -53,13 +52,13 @@ class AddAddressScreen extends StatelessWidget {
                       hintText: "Notes...",
                       textEditingController: cubit.notesController),
                   verticalSpace(100.h),
-                  CustomElevatedButton(
+                  CustomMaterialButton(
                       label: "Add Address",
                       onPress: () {
                         cubit.setNewAddress(context);
                       }),
                   verticalSpace(26.h),
-                  CustomElevatedButton(
+                  CustomMaterialButton(
                       label: "Get All Address",
                       onPress: () {
                         Navigator.of(context, rootNavigator: true)

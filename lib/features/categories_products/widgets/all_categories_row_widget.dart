@@ -1,4 +1,3 @@
-import 'package:ecommerce/core/base_widget/custom_cached_network_image.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/features/categories_products/logic/categories_cubit/categories_cubit.dart';
@@ -22,9 +21,9 @@ class AllCategoriesRowWidget extends StatelessWidget {
           return cubit.categoriesModel == null
               ? const SizedBox()
               : SizedBox(
-                  height: 150.h,
+                  height: 100.h,
                   child: ListView.separated(
-                    padding: const EdgeInsets.all(8),
+                    padding: EdgeInsets.symmetric(horizontal: 8.w),
                     scrollDirection: Axis.horizontal,
                     itemCount:
                         cubit.categoriesModel!.data!.categoryItem!.length,

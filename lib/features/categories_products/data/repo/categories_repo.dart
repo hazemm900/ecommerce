@@ -1,6 +1,5 @@
 import 'package:ecommerce/core/networking/api_error_handler.dart';
 import 'package:ecommerce/core/networking/api_result.dart';
-import 'package:ecommerce/features/auth/data/models/profile_model/profile_model.dart';
 import 'package:ecommerce/features/categories_products/data/api/api_categories.dart';
 import 'package:ecommerce/features/categories_products/data/model/categories_model.dart';
 import 'package:ecommerce/features/categories_products/data/model/category_details_model.dart';
@@ -35,11 +34,10 @@ class CategoriesRepo {
       int productId) async {
     try {
       final response =
-      await _categoriesWebServices.getProductsDetails(productId);
+          await _categoriesWebServices.getProductsDetails(productId);
       return ApiResult.success(response);
     } catch (error) {
       return ApiResult.failure(ApiErrorHandler.handle(error));
     }
   }
-
 }

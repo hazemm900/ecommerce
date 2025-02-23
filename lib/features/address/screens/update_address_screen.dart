@@ -1,7 +1,6 @@
 import 'package:ecommerce/core/base_widget/custom_app_bar.dart';
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
+import 'package:ecommerce/core/base_widget/custom_material_button.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
-import 'package:ecommerce/core/routes/routes.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/features/address/logic/address_cubit/address_cubit.dart';
 import 'package:ecommerce/features/address/logic/address_cubit/address_state.dart';
@@ -22,7 +21,7 @@ class UpdateAddressScreen extends StatelessWidget {
       builder: (context, state) {
         var cubit = getIt<AddressCubit>();
         return Scaffold(
-          appBar: const CustomAppBar(appBarTitle: "Update Address"),
+          appBar: const CustomAppBar(title: "Update Address"),
           body: SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.all(24.0),
@@ -54,7 +53,7 @@ class UpdateAddressScreen extends StatelessWidget {
                       hintText: "Notes...",
                       textEditingController: cubit.notesController),
                   verticalSpace(100.h),
-                  CustomElevatedButton(
+                  CustomMaterialButton(
                       label: "Update Address",
                       onPress: () {
                         cubit.updateAddress(context, addressId);

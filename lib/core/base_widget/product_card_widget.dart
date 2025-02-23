@@ -33,19 +33,20 @@ class ProductCardWidget extends StatelessWidget {
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) => ProductDetailsScreen(
-                    productId: productId)));
+                builder: (context) =>
+                    ProductDetailsScreen(productId: productId)));
       },
       child: Card(
         elevation: 4,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
+        shape:
+            RoundedRectangleBorder(borderRadius: BorderRadius.circular(10.r)),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
               child: ClipRRect(
                   borderRadius:
-                       BorderRadius.vertical(top: Radius.circular(10.r)),
+                      BorderRadius.vertical(top: Radius.circular(10.r)),
                   child: CustomNetworkImage(image: productImage)),
             ),
             Padding(
@@ -60,7 +61,7 @@ class ProductCardWidget extends StatelessWidget {
               child: Text(productDescription,
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
-                  style:  TextStyle(
+                  style: TextStyle(
                       fontSize: 12.sp,
                       fontWeight: FontWeight.w400,
                       color: MyColors.myGrey)),
@@ -88,7 +89,7 @@ class ProductCardWidget extends StatelessWidget {
                   const Spacer(),
                   IconButton(
                     onPressed: () {},
-                    icon:  Icon(
+                    icon: Icon(
                       Icons.favorite,
                       color: Colors.amber,
                       size: 16.r,

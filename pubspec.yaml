@@ -61,6 +61,10 @@ dependencies:
   persistent_bottom_nav_bar: ^5.0.2
   flutter_spinkit:
   flutter_screenutil:
+  flutter_native_splash: 
+  flutter_gen_runner:
+  flutter_staggered_grid_view:
+  smooth_page_indicator:
 
 
 dev_dependencies:

@@ -21,7 +21,7 @@ class FavoritesScreen extends StatelessWidget {
       builder: (context, state) {
         var cubit = getIt<FavoritesCubit>();
         return Scaffold(
-          appBar: const CustomAppBar(appBarTitle: "Favorites"),
+          appBar: const CustomAppBar(title: "Favorites"),
           body: cubit.favoritesModel == null
               ? Center(
                   child: SpinKitHourGlass(
@@ -29,7 +29,7 @@ class FavoritesScreen extends StatelessWidget {
                   size: 50.0.r,
                 ))
               : SingleChildScrollView(
-                child: Column(
+                  child: Column(
                     children: [
                       ListView.builder(
                         shrinkWrap: true,
@@ -45,7 +45,8 @@ class FavoritesScreen extends StatelessWidget {
                               child: Column(
                                 children: [
                                   Row(
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       CustomNetworkImage(
                                         image: cubit.favoritesModel?.data
@@ -67,7 +68,7 @@ class FavoritesScreen extends StatelessWidget {
                       ),
                     ],
                   ),
-              ),
+                ),
         );
       },
     );

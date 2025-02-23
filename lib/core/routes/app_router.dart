@@ -1,7 +1,6 @@
 import 'package:ecommerce/core/routes/routes.dart';
 import 'package:ecommerce/features/address/screens/add_address_screen.dart';
 import 'package:ecommerce/features/address/screens/all_addresses_screen.dart';
-import 'package:ecommerce/features/address/screens/update_address_screen.dart';
 import 'package:ecommerce/features/auth/screens/login_screen.dart';
 import 'package:ecommerce/features/auth/screens/profile_screen.dart';
 import 'package:ecommerce/features/auth/screens/register_screen.dart';
@@ -9,7 +8,7 @@ import 'package:ecommerce/features/auth/screens/sign_up_screen.dart';
 import 'package:ecommerce/features/cart/screens/cart_screen.dart';
 import 'package:ecommerce/features/custom_bottom_nav_bar/screens/custom_bottom_nav_bar.dart';
 import 'package:ecommerce/features/home/screens/home_screen.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:ecommerce/features/on_boarding/ui/screens/on_boarding_screen.dart';
 import 'package:flutter/material.dart';
 
 class RouteGenerator {
@@ -30,11 +29,13 @@ class RouteGenerator {
       case Routes.homeScreen:
         return pageRouterBuilder(screen: const HomeScreen());
       case Routes.addAddressScreen:
-        return pageRouterBuilder(screen: AddAddressScreen());
+        return pageRouterBuilder(screen: const AddAddressScreen());
       case Routes.allAddressesScreen:
         return pageRouterBuilder(screen: const AllAddressesScreen());
       case Routes.cartScreen:
         return pageRouterBuilder(screen: const CartScreen());
+      case Routes.onBoardingScreen:
+        return pageRouterBuilder(screen: const OnBoardingScreen());
       default:
         // Return a default error screen
         return MaterialPageRoute(

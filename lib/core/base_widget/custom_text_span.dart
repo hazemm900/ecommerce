@@ -6,32 +6,43 @@ class CustomTextSpan extends StatelessWidget {
   final String firstLabel;
   final String secondLabel;
   final VoidCallback onPress;
+  final TextStyle? firstLabelStyle;
+  final TextStyle? secondLabelStyle;
 
-  const CustomTextSpan(
-      {super.key,
-      required this.firstLabel,
-      required this.secondLabel,
-      required this.onPress});
+  const CustomTextSpan({
+    super.key,
+    required this.firstLabel,
+    required this.secondLabel,
+    required this.onPress,
+    this.firstLabelStyle,
+    this.secondLabelStyle,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: InkWell(
+      child: GestureDetector(
         onTap: onPress,
         child: RichText(
+          textAlign: TextAlign.center,
           text: TextSpan(
             text: firstLabel,
-            style: TextStyle(
-                fontSize: 14.sp,
-                fontWeight: FontWeight.bold,
-                color: Colors.grey.shade500),
+            style: firstLabelStyle ??
+                TextStyle(
+                  fontSize: 14.sp,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.grey.shade500,
+                ),
             children: <TextSpan>[
               TextSpan(
                 text: secondLabel,
-                style: const TextStyle(
-                    color: MyColors.myMutedGold,
-                    fontWeight: FontWeight.bold,
-                    decoration: TextDecoration.underline),
+                style: secondLabelStyle ??
+                    TextStyle(
+                      fontSize: 14.sp,
+                      fontWeight: FontWeight.bold,
+                      color: MyColors.myMutedGold,
+                      decoration: TextDecoration.underline,
+                    ),
               ),
             ],
           ),

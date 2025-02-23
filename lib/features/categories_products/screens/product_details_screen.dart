@@ -1,8 +1,4 @@
-import 'package:cached_network_image/cached_network_image.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:ecommerce/core/base_widget/custom_app_bar.dart';
-import 'package:ecommerce/core/base_widget/custom_cached_network_image.dart';
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/core/theme/color.dart';
@@ -30,7 +26,7 @@ class ProductDetailsScreen extends StatelessWidget {
         var cubit = getIt<CategoriesCubit>();
         var productItem = cubit.productDetailsModel?.data;
         return Scaffold(
-          appBar: const CustomAppBar(appBarTitle: "product Details"),
+          appBar: const CustomAppBar(title: "product Details"),
           body: cubit.productDetailsModel == null
               ? Center(
                   child: SpinKitHourGlass(

@@ -1,8 +1,7 @@
-import 'package:ecommerce/core/base_widget/custom_elevated_button.dart';
-import 'package:ecommerce/core/base_widget/custom_text_form_field.dart';
+import 'package:ecommerce/core/base_widget/custom_material_button.dart';
+import 'package:ecommerce/core/base_widget/logic/obscure_text_cubit/obscure_text_cubit.dart';
 import 'package:ecommerce/core/helper/spacing.dart';
 import 'package:ecommerce/core/services/service_locator.dart';
-import 'package:ecommerce/core/theme/color.dart';
 import 'package:ecommerce/features/auth/logic/auth_cubit/auth_cubit.dart';
 import 'package:ecommerce/features/auth/logic/auth_cubit/auth_state.dart';
 import 'package:ecommerce/features/auth/widgets/forget_password_spacer_widget.dart';
@@ -44,11 +43,14 @@ class SignUpScreen extends StatelessWidget {
                       hintText: "Enter your email",
                       textEditingController: cubit.emailController),
                   verticalSpace(26.h),
-                  TextFormFieldWidget(
-                      label: "Create password",
-                      hintText: "Enter your password",
-                      isPasswordField: true,
-                      textEditingController: cubit.passwordController),
+                  BlocProvider(
+                    create: (context) => ObscureTextCubit(),
+                    child: TextFormFieldWidget(
+                        label: "Create password",
+                        hintText: "Enter your password",
+                        isPasswordField: true,
+                        textEditingController: cubit.passwordController),
+                  ),
                   verticalSpace(16.h),
                   const ForgetPasswordSpacerWidget(),
                   verticalSpace(38.h),
@@ -56,7 +58,7 @@ class SignUpScreen extends StatelessWidget {
                   verticalSpace(28.h),
                   const SocialMediaRowWidget(),
                   verticalSpace(100),
-                  CustomElevatedButton(
+                  CustomMaterialButton(
                       label: "Sign up",
                       onPress: () {
                         cubit.register(context);

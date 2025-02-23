@@ -4,7 +4,6 @@ import 'package:ecommerce/features/address/data/models/address_request_model.dar
 import 'package:ecommerce/features/address/data/models/get_address_model.dart';
 import 'package:ecommerce/features/address/data/repo/address_repo.dart';
 import 'package:ecommerce/features/address/logic/address_cubit/address_state.dart';
-import 'package:ecommerce/features/address/screens/all_addresses_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 

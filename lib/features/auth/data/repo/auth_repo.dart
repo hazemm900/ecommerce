@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:ecommerce/core/networking/api_error_handler.dart';
 import 'package:ecommerce/core/networking/api_result.dart';
 import 'package:ecommerce/features/auth/data/apis/api_auth.dart';

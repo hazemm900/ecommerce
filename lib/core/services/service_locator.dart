@@ -32,7 +32,7 @@ Future<void> setupGetIt() async {
   // تسجيل Dio
   // الحصول على SharedPreferences وتسجيل SharedPrefHelper
 
-  Dio dio = DioFactory.getDio();
+  Dio dio = await DioFactory.getDio();
 
   // ================ Auth ================ //
   getIt.registerFactory(() => AuthCubit(getIt()));

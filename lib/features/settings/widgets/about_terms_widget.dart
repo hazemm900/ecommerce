@@ -1,4 +1,3 @@
-import 'package:ecommerce/core/services/service_locator.dart';
 import 'package:ecommerce/core/theme/color.dart';
 import 'package:ecommerce/features/settings/logic/setting_cubit/setting_cubit.dart';
 import 'package:ecommerce/features/settings/logic/setting_cubit/setting_state.dart';
@@ -16,15 +15,15 @@ class AboutTermsWidget extends StatelessWidget {
       builder: (context, state) {
         var cubit = SettingCubit.get(context);
         return ExpansionTile(
-          title: Text(
+          textColor: MyColors.myMutedBlue,
+          title: const Text(
             "About & Terms",
-            style: Theme.of(context).textTheme.titleMedium,
           ),
           children: [
             ExpansionTile(
-              title: Text(
+              textColor: MyColors.myMutedBlue,
+              title: const Text(
                 "About:",
-                style: Theme.of(context).textTheme.titleMedium,
               ),
               children: [
                 ListTile(
@@ -42,9 +41,9 @@ class AboutTermsWidget extends StatelessWidget {
               ],
             ),
             ExpansionTile(
-              title: Text(
+              textColor: MyColors.myMutedBlue,
+              title: const Text(
                 "Terms:",
-                style: Theme.of(context).textTheme.titleMedium,
               ),
               children: [
                 ListTile(
